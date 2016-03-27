@@ -10,9 +10,10 @@
       this.groupNameSelector = ".site-header__title a";
       this.itemSelector = ".Thread__subject";
       this.platformLoaded = false;
-      this.interval = 250;
+      this.interval = 2500;
       this.loadHarvestPlatform();
-      window.setInterval(this.addTimers, this.interval);
+      // window.setInterval(this.addTimers, this.interval);
+      this.addTimers;
     }
 
     CodebaseProfile.prototype.loadHarvestPlatform = function() {
@@ -110,15 +111,25 @@
     };
 
     CodebaseProfile.prototype.buildTimer = function(item, data) {
-      var timer;
-      timer = document.createElement("div");
-      timer.className = "harvest-timer";
-      timer.style.marginRight = "4px";
-      timer.setAttribute("id", "harvest-basecamp-timer-" + data.item.id);
+      var timer, backBtn;
+
+      timer = document.createElement("a");
+      timer.className = "harvest-timer btn page-button";
+      timer.setAttribute("data-skip-styling", "true");
+      timer.setAttribute("id", "harvest-codebase-timer-" + data.item.id);
       timer.setAttribute("data-account", JSON.stringify(data.account));
       timer.setAttribute("data-group", JSON.stringify(data.group));
       timer.setAttribute("data-item", JSON.stringify(data.item));
-      return item.insertBefore(timer, item.children[0]);
+      timer.innerHTML = '<span style="background-image:url(https://assets4.codebasehq.com/assets/icons/time-2150b0784f5f3c902a6ed10df6a8cafa.png)" class="i time page-button__icon">Track Time</span>';
+
+console.log( 'timer', timer );
+
+      backBtn = document.querySelector(".buttons");
+
+console.log( 'backBtn', backBtn );
+console.log( 'backBtn.children[1]', backBtn.children[1] );
+
+      return backBtn.insertBefore(timer, backBtn.children[1]);
     };
 
     CodebaseProfile.prototype.notifyPlatformOfNewTimers = function() {

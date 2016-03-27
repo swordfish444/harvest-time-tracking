@@ -30,3 +30,7 @@ New File: css/profiles/basecamp-classic.css
 Renamed: js/profiles/basecamp-2.js
 New File: js/profiles/basecamp-3.js
 New File: js/profiles/codebase.js
+
+## To Do
+
+- For Codebase, set button color to blue when timer is active
