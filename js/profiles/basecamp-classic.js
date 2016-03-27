@@ -65,7 +65,9 @@
 
     BasecampProfile.prototype.getDataForTimer = function(item) {
       var groupName, itemName, link, linkParts;
+
       itemName = ( item.querySelector("a[title]") || item.querySelector("a") ).innerText;
+
       groupNameHTML = document.querySelector(this.groupNameSelector).innerHTML;
       groupNameMatch = groupNameHTML.match(/.+?(?= <)/);
       groupName = groupNameMatch[0];
